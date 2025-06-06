@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #4338ca, #6366f1, #818cf8, #a5b4fc);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+        
+        .token-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .token-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -25px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+        
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Header with wallet connection -->
+    <header class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="bg-indigo-600 p-2 rounded-lg">
+                        <i class="fas fa-cube text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold">Web3Template</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                    <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                    <a href="#tokenomics" class="hover:text-indigo-400 transition">Tokenomics</a>
+                    <a href="#roadmap" class="hover:text-indigo-400 transition">Roadmap</a>
+                    <a href="#team" class="hover:text-indigo-400 transition">Team</a>
+                </nav>
+                
+                <div>
+                    <button id="connectWalletBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full font-medium transition flex items-center space-x-2">
+                        <i class="fas fa-wallet"></i>
+                        <span>Connect Wallet</span>
+                    </button>
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-300 ml-4">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-700">
+                <div class="flex flex-col space-y-3 pt-4">
+                    <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                    <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                    <a href="#tokenomics" class="hover:text-indigo-400 transition">Tokenomics</a>
+                    <a href="#roadmap" class="hover:text-indigo-400 transition">Roadmap</a>
+                    <a href="#team" class="hover:text-indigo-400 transition">Team</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero section -->
+    <section id="home" class="gradient-bg pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Build The Future With <span class="text-indigo-200">Web3</span></h1>
+                <p class="text-xl mb-8 text-gray-200 max-w-lg">Decentralized applications, NFTs, DeFi, and more. The future of the internet is here.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-bold transition flex items-center justify-center space-x-2">
+                        <i class="fas fa-rocket"></i>
+                        <span>Get Started</span>
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-6 py-3 rounded-full font-bold transition flex items-center justify-center space-x-2">
+                        <i class="fas fa-book"></i>
+                        <span>Whitepaper</span>
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="h-auto max-w-xs md:max-w-sm lg:max-w-md animate-pulse" alt="Web3 Icon">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features section -->
+    <section id="features" class="py-20 bg-gray-800 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Powerful <span class="text-indigo-400">Features</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our platform offers everything you need to participate in the decentralized economy</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-lock text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Secure & Private</h3>
+                    <p class="text-gray-400">Your data and transactions are secured with cutting-edge cryptographic technology.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-coins text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Token Economy</h3>
+                    <p class="text-gray-400">Participate in the native token economy with staking, farming, and governance.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">DAOs</h3>
+                    <p class="text-gray-400">Decentralized Autonomous Organizations allow for community governance and decision making.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-exchange-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">DeFi Integration</h3>
+                    <p class="text-gray-400">Access decentralized finance protocols for lending, borrowing, and earning yield.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-gem text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">NFT Marketplace</h3>
+                    <p class="text-gray-400">Create, buy, and sell unique digital assets with our integrated NFT marketplace.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-700/50 hover:bg-gray-700/80 rounded-xl p-8 transition border border-gray-600/30">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-layer-group text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-Chain</h3>
+                    <p class="text-gray-400">Works across multiple blockchains including Ethereum, Polygon, and Binance Smart Chain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tokenomics section -->
+    <section id="tokenomics" class="py-20 bg-gray-900 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Token <span class="text-indigo-400">Economics</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our token distribution ensures fair and sustainable growth</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="bg-gray-800 rounded-xl p-8 lg:mr-16">
+                        <h3 class="text-xl font-bold mb-6">Token Distribution</h3>
+                        <div class="space-y-4">
+                            <!-- Token allocation 1 -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-300">Public Sale</span>
+                                    <span class="text-indigo-400">40%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Token allocation 2 -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-300">Team & Advisors</span>
+                                    <span class="text-indigo-400">20%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Token allocation 3 -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-300">Ecosystem</span>
+                                    <span class="text-indigo-400">25%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Token allocation 4 -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-300">Liquidity</span>
+                                    <span class="text-indigo-400">15%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 15%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Token card 1 -->
+                        <div class="token-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-600">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-indigo-600 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-coins text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Total Supply</h3>
+                            </div>
+                            <p class="text-3xl font-bold text-indigo-400">1,000,000,000</p>
+                            <p class="text-gray-400">W3T Tokens</p>
+                        </div>
+                        
+                        <!-- Token card 2 -->
+                        <div class="token-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-600">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-indigo-600 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-fire-alt text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Burn Mechanism</h3>
+                            </div>
+                            <p class="text-3xl font-bold text-indigo-400">2%</p>
+                            <p class="text-gray-400">of all transactions</p>
+                        </div>
+                        
+                        <!-- Token card 3 -->
+                        <div class="token-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-600">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-indigo-600 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-hand-holding-usd text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Token Distribution</h3>
+                            </div>
+                            <p class="text-3xl font-bold text-indigo-400">1 ETH =</p>
+                            <p class="text-gray-400">5,000 W3T Tokens</p>
+                        </div>
+                        
+                        <!-- Token card 4 -->
+                        <div class="token-card bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-600">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-indigo-600 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-landmark text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Market Cap</h3>
+                            </div>
+                            <p class="text-3xl font-bold text-indigo-400">$10M</p>
+                            <p class="text-gray-400">at initial stage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats section -->
+    <section class="py-16 bg-indigo-900/40 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <!-- Stat 1 -->
+                <div class="p-6">
+                    <p class="text-4xl md:text-5xl font-bold text-indigo-300 mb-2">24K+</p>
+                    <p class="text-gray-300">Community Members</p>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="p-6">
+                    <p class="text-4xl md:text-5xl font-bold text-indigo-300 mb-2">15+</p>
+                    <p class="text-gray-300">Blockchain Networks</p>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="p-6">
+                    <p class="text-4xl md:text-5xl font-bold text-indigo-300 mb-2">100M+</p>
+                    <p class="text-gray-300">Transactions Processed</p>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="p-6">
+                    <p class="text-4xl md:text-5xl font-bold text-indigo-300 mb-2">50+</p>
+                    <p class="text-gray-300">DApps Supported</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roadmap section -->
+    <section id="roadmap" class="py-20 bg-gray-800 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Project <span class="text-indigo-400">Roadmap</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our vision for building the decentralized future</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Roadmap item 1 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="roadmap-item">
+                        <div class="absolute top-0 left-0 rounded-full bg-indigo-600 p-1 flex items-center justify-center">
+                            <div class="bg-white rounded-full w-2 h-2"></div>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Q1 2023</h3>
+                                <span class="bg-indigo-600 text-xs px-3 py-1 rounded-full">Completed</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Concept development & whitepaper</li>
+                                <li>Core team formation</li>
+                                <li>Initial token design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Roadmap item 2 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="roadmap-item">
+                        <div class="absolute top-0 left-0 rounded-full bg-indigo-600 p-1 flex items-center justify-center">
+                            <div class="bg-white rounded-full w-2 h-2"></div>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Q2 2023</h3>
+                                <span class="bg-indigo-600 text-xs px-3 py-1 rounded-full">Current</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Private sale & strategic partnerships</li>
+                                <li>Smart contract development</li>
+                                <li>Testnet deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Roadmap item 3 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="roadmap-item">
+                        <div class="absolute top-0 left-0 rounded-full bg-indigo-600 p-1 flex items-center justify-center">
+                            <div class="bg-white rounded-full w-2 h-2"></div>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Q3 2023</h3>
+                                <span class="bg-indigo-400 text-xs px-3 py-1 rounded-full">Next</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Public token sale</li>
+                                <li>Mainnet launch</li>
+                                <li>First DApp integrations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Roadmap item 4 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="roadmap-item">
+                        <div class="absolute top-0 left-0 rounded-full bg-indigo-600 p-1 flex items-center justify-center">
+                            <div class="bg-white rounded-full w-2 h-2"></div>
+                        </div>
+                        <div class="bg-gray-700 rounded-xl p-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-bold">Q4 2023 & Beyond</h3>
+                                <span class="bg-gray-600 text-xs px-3 py-1 rounded-full">Future</span>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-300">
+                                <li>Cross-chain expansion</li>
+                                <li>DAO governance</li>
+                                <li>Advanced DeFi features</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team section -->
+    <section id="team" class="py-20 bg-gray-900 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet The <span class="text-indigo-400">Team</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Our talented team driving the Web3 revolution</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team member 1 -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden transition hover:shadow-lg">
+                    <div class="overflow-hidden h-48">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-full h-full object-cover transition" alt="Team Member">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Alex Johnson</h3>
+                        <p class="text-indigo-400 mb-3">CEO & Founder</p>
+                        <p class="text-gray-400 text-sm">Former Google blockchain lead with 10+ years in crypto.</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team member 2 -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden transition hover:shadow-lg">
+                    <div class="overflow-hidden h-48">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-full h-full object-cover transition" alt="Team Member">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Sarah Chen</h3>
+                        <p class="text-indigo-400 mb-3">CTO</p>
+                        <p class="text-gray-400 text-sm">Full-stack developer with expertise in blockchain architecture.</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team member 3 -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden transition hover:shadow-lg">
+                    <div class="overflow-hidden h-48">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" class="w-full h-full object-cover transition" alt="Team Member">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Michael Rodriguez</h3>
+                        <p class="text-indigo-400 mb-3">Lead Developer</p>
+                        <p class="text-gray-400 text-sm">Smart contract specialist and Solidity wizard.</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team member 4 -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden transition hover:shadow-lg">
+                    <div class="overflow-hidden h-48">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-full h-full object-cover transition" alt="Team Member">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold">Emma Wilson</h3>
+                        <p class="text-indigo-400 mb-3">Marketing Director</p>
+                        <p class="text-gray-400 text-sm">Web3 marketing expert and community growth strategist.</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA section -->
+    <section class="py-16 gradient-bg px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready To Join The <span class="text-indigo-200">Web3 Revolution</span>?</h2>
+            <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Connect your wallet and start your decentralized journey today.</p>
+            <button class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-full font-bold transition flex items-center space-x-2 mx-auto">
+                <i class="fas fa-rocket"></i>
+                <span>Get Started Now</span>
+            </button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-16 pb-8 px-6 border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="bg-indigo-600 p-2 rounded-lg">
+                            <i class="fas fa-cube text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">Web3Template</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Building the decentralized future with innovative blockchain solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Product</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Tokenomics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Roadmap</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Whitepaper</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Developers</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">GitHub</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Smart Contracts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Bug Bounty</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400">support@web3template.com</li>
+                        <li class="text-gray-400">+1 (555) 123-4567</li>
+                        <li class="text-gray-400">123 Blockchain St, Crypto City</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-800 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Web3Template. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Wallet connection modal -->
+    <div id="walletModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-6">
+        <div class="bg-gray-800 rounded-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Connect Wallet</h3>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Wallet option 1 -->
+                <button class="w-full flex items-center justify-between p-4 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition border border-gray-700">
+                    <div class="flex items-center">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" class="w-8 h-8 mr-4" alt="MetaMask">
+                        <span>MetaMask</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </button>
+                
+                <!-- Wallet option 2 -->
+                <button class="w-full flex items-center justify-between p-4 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition border border-gray-700">
+                    <div class="flex items-center">
+                        <img src="https://cryptologos.cc/logos/walletconnect-walletconnect-logo.png" class="w-8 h-8 mr-4" alt="WalletConnect">
+                        <span>WalletConnect</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </button>
+                
+                <!-- Wallet option 3 -->
+                <button class="w-full flex items-center justify-between p-4 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition border border-gray-700">
+                    <div class="flex items-center">
+                        <img src="https://cryptologos.cc/logos/coinbase-wallet-cbw-logo.png" class="w-8 h-8 mr-4" alt="Coinbase Wallet">
+                        <span>Coinbase Wallet</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </button>
+            </div>
+            
+            <p class="text-center text-gray-400 mt-6 text-sm">
+                By connecting a wallet, you agree to our <a href="#" class="text-indigo-400">Terms of Service</a> and <a href="#" class="text-indigo-400">Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Wallet modal toggle
+        const connectWalletBtn = document.getElementById('connectWalletBtn');
+        const walletModal = document.getElementById('walletModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        connectWalletBtn.addEventListener('click', () => {
+            walletModal.classList.remove('hidden');
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            walletModal.classList.add('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Simulate wallet connection
+        const walletOptions = document.querySelectorAll('#walletModal button:not(#closeModalBtn)');
+        
+        walletOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Simulate connecting to wallet
+                setTimeout(() => {
+                    connectWalletBtn.innerHTML = '<i class="fas fa-check-circle"></i><span>Connected</span>';
+                    connectWalletBtn.classList.remove('bg-indigo-600');
+                    connectWalletBtn.classList.add('bg-green-600');
+                    walletModal.classList.add('hidden');
+                }, 1000);
+            });
+        });
+        
+        // Animate elements when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.roadmap-item, .team-card, .token-card').forEach(el => {
+            el.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
